@@ -6,12 +6,19 @@ const view = require('swig');
 routes.addRoute('/', function(req, res) {
   // Menampilkan viewIndex.html menggunakan view
   let html = view.compileFile("./template/viewIndex.html")({
-    title : "Judul yang dikirim melalui view"
+    title : "Ini Halaman Index"
   });
   res.writeHead(200, {"Content-Type" : "text/html"});
   res.end(html);
 });
 
+routes.addRoute('/contact', function(req, res) {
+  let html = view.compileFile("./template/viewContact.html")({
+    title: "Ini Halaman Contact"
+  });
+  res.writeHead(200, {"Content-Type" : "text/html"});
+  res.end(html);
+})
 
 http.createServer(function(req, res) {
   let pathname = url.parse(req.url).pathname;
